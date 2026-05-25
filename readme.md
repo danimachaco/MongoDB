@@ -1,15 +1,33 @@
-📦 Proyecto MongoDB
-Este repositorio contiene ejemplos y scripts básicos para trabajar con MongoDB, incluyendo conexión, creación de colecciones, inserción de documentos y consultas simples.
+# 🍃 MongoDB — Ejemplos y Scripts Básicos
 
-🚀 Requisitos
-MongoDB instalado en tu máquina
+Colección de scripts para aprender y practicar operaciones esenciales con MongoDB: conexión, creación de colecciones, inserción de documentos y consultas.
 
-Node.js (si usas scripts en JavaScript)
+---
 
-Cliente MongoDB opcional: MongoDB Compass o mongosh
+## 📋 Requisitos
 
-🔌 Conexión a la base de datos
-js
+- [MongoDB](https://www.mongodb.com/try/download/community) instalado localmente
+- [Node.js](https://nodejs.org/) (para ejecutar los scripts en JavaScript)
+- *(Opcional)* [MongoDB Compass](https://www.mongodb.com/products/compass) o `mongosh` como cliente visual
+
+---
+
+## 📁 Estructura del repositorio
+
+```
+/
+├── ejs_1_MongoDB.mongodb   # Conexión a la base de datos
+├── ejs_2_MongoDB.mongodb   # Inserción y consulta de documentos
+├── ejs_3_MongoDB.mongodb   # Actualización y eliminación
+└── README.md
+```
+
+---
+
+## 🚀 Operaciones cubiertas
+
+### Conexión
+```js
 const { MongoClient } = require("mongodb");
 
 const uri = "mongodb://localhost:27017";
@@ -25,27 +43,33 @@ async function run() {
 }
 
 run();
-📁 Estructura del repositorio
-Código
-/src
-  ├── conexion.js
-  ├── insertar.js
-  ├── buscar.js
-  └── actualizar.js
-README.md
-🛠️ Operaciones básicas
-➕ Insertar documentos
-js
+```
+
+### Insertar un documento
+```js
 db.productos.insertOne({ nombre: "Teclado", precio: 25 });
-🔍 Buscar documentos
-js
+```
+
+### Buscar documentos
+```js
 db.productos.find({ precio: { $gt: 20 } });
-✏️ Actualizar documentos
-js
+```
+
+### Actualizar un documento
+```js
 db.productos.updateOne(
   { nombre: "Teclado" },
   { $set: { precio: 30 } }
 );
-❌ Eliminar documentos
-js
+```
+
+### Eliminar un documento
+```js
 db.productos.deleteOne({ nombre: "Teclado" });
+```
+
+---
+
+## 👤 Autor
+
+**danimachaco** — [github.com/danimachaco](https://github.com/danimachaco)
