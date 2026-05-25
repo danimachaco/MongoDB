@@ -1,0 +1,79 @@
+use("ejs_1_MongoDB");
+//1.
+// db.createCollection("armas");
+
+
+//2.
+// db.personajes.insertOne({
+
+//     nombre: "Tanjiro Kamado",
+//     anime: "Demon Slayer",
+//     poder: 4000,
+//     es_humano: true,
+
+// });
+
+
+//3.
+// db.personajes.insertMany([
+//     {
+//         nombre: "Freezer",
+//         anime: "Dragon Ball",
+//         poder: 8000,
+//         es_humano: false,
+//     },
+//     {
+//         nombre: "Sasuke Uchiha",
+//         anime: "Naruto",
+//         poder: 6900,
+//         es_humano: true,
+//     },
+// ]);
+
+
+//4.
+// db.personajes.find({}) ;
+
+
+//5.
+// db.personajes.findOne({}) ;
+
+
+//6.
+// db.personajes.find({anime: "Dragon Ball"}) ;
+
+
+//7.
+// db.personajes.find({' nombre ': ' Eren Jaeger ',}) ;
+
+
+//8.
+// db.personajes.find({},{' nombre ':1,' poder ':1}) ;
+
+
+//9.
+// db.personajes.find({},{' nombre ':1,' anime ':1,'_id':0}) ;
+
+
+//10.
+// db.personajes.find({},{' es_humano ':0}) ;
+
+
+//11.
+// db.personajes.find({' anime ':' Naruto '},{' nombre ':1,'_id':0}) ;
+
+
+//12.
+// db.personajes.deleteOne({' nombre ': ' Edward Elric '})
+
+
+//13.
+// db.personajes.deleteMany({' anime ': ' Dragon Ball '})
+
+
+//14.
+// db.personajes.deleteMany({poder: 5000})
+
+
+//15.
+// db.personajes.deleteMany({})

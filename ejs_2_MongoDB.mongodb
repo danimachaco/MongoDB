@@ -1,0 +1,101 @@
+use("ejs_2_MongoDB");
+//1.
+// db.objetos_espaciales.find({tipo: {$eq: " Planeta "}}) ;
+
+
+//2.
+// db.objetos_espaciales.find({distancia_tierra_km: {$lt: 100000000}}) ;
+
+
+//3.
+// db.objetos_espaciales.find({caracteristicas: {$in: [" Gigante gaseoso ", " Habitable "]}}) ;
+
+
+//4.
+// db.objetos_espaciales.find({tipo: {$eq: " Planeta "}, masa_indice: {$gt: 50}}) ;
+
+
+//5.
+// db.objetos_espaciales.find({}).sort({distancia_tierra_km: -1}).limit(3)
+
+//6.
+// db.objetos_espaciales.find({}).sort({nombre: 1}).limit(5).skip(2);
+
+
+//7.
+// db.objetos_espaciales.updateOne({nombre: {$eq: " Hubble "}}, { $set: { estado: " En mantenimiento " } }) ;
+
+
+//8.
+// db.objetos_espaciales.updateOne({nombre: {$eq: " Marte "}}, { $push: { caracteristicas: " Agua subterranea. " }}) ;
+
+
+//9.
+// db.objetos_espaciales.updateOne({nombre: {$eq: " Voyager 1 "}}, { $inc: { misiones_exitosas: 1 }}) ;
+
+
+//10.
+// db.objetos_espaciales.deleteOne({nombre: {$eq: " Sputnik 1 "}}) ;
+
+
+//11.
+// db.objetos_espaciales.aggregate([
+//     {$match: {nombre: {$regex: "/^S/i"}}}
+// ])
+
+
+//12.
+// db.objetos_espaciales.find({$or :[{lunas_conocidas: {$exists: true}}, {lunas_principales: {$exists: true}}]});
+
+
+//13.
+// db.objetos_espaciales.aggregate([
+//     {
+//         $match: { lanzamiento: { $gt : 1950,$lt: 1980 } }
+//     }
+// ])
+
+
+
+//14.
+// db.objetos_espaciales.find({tipo: {$ne: " Planeta "}})
+
+
+//15.
+// db.objetos_espaciales.find({$or:[{tipo: {$eq: " Estrella "}}, {tipo: {$eq: " Cometa "}}]}) ;
+
+
+//16.????
+// db.objetos_espaciales.aggregate([
+//     { $match: { lunas_conocidas: { $size: 4 } } }
+// ]);
+
+
+//17.
+// db.objetos_espaciales.updateOne({nombre: {$eq: " Júpiter "}}, { $unset: {descubierto: ""} });
+
+
+
+//18.
+// db.planetas.updateOne(
+//     { nombre: "Marte" },
+//     { $pull: { caracteristicas: " Polvoriento " } }
+// )
+
+
+//19.
+// db.objetos_espaciales.updateMany({},{$rename: {"masa_indice": "masa_relativa"}}) ;
+
+//20.
+// db.objetos.find().sort({
+//     tipo: 1,
+//     distanciaTierraKm: -1
+// })
+
+
+// db.objetos_espaciales.find({}) ;
+
+
+
+
+// db.objetos_espaciales.find({}) ;

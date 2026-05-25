@@ -1,0 +1,289 @@
+use("ejs_3_MongoDB")
+//1.
+// db.videogames.aggregate([
+//     {$sort: {
+//       rating: -1
+//     }},
+//     {$skip: 2},
+//     {$limit: 1},
+// ])
+
+
+//2.
+// db.videogames.aggregate([
+//     {$project: {totalPlatforms: {$size: "$platforms"}}},
+//     {$sort: {totalPlatforms: -1}},
+//     {$skip: 3},
+//     {$limit: 1}
+// ])
+
+
+//3.
+// db.videogames.aggregate([
+//     {$unwind: "$genre"},
+//     {$group: {_id: "$genre", averagePrice: {$avg: "$price"}}},
+//     {$sort: {averagePrice: 1}}
+// ])
+
+
+//4. ???
+// db.videogames.aggregate([
+//     {$match : {"developer.country" : "Japan"}},
+//     {$project : {
+//         _id: 0,
+//         title: 1,
+//         developername: "$developer.name",
+//     }}
+// ])
+
+
+//5.
+// db.videogames.aggregate([
+//     {$group: {_id: "$publisher", totalopiesSold: {$sum: "$copiesSold"}}},
+//     {$sort: {totalopiesSold: -1}},
+// ])
+
+
+//6.
+// db.videogames.aggregate([
+//     {$match: {
+//         rating: {$gt: 90},
+//         realiseYears: {$gt: 2016}
+//     }},
+//     {$project: {
+//         _id: 0,
+//         title: 1,
+//         realiseYears: 1,
+//         rating: 1
+//     }}
+// ])
+
+
+//7.
+// db.videogames.aggregate([
+//     {$group: {
+//         _id: "$developer.country",
+//         promedio: {$avg: "$copiesSold"}
+//     }},
+//     {$sort: {promedio: -1}}
+// ])
+
+
+//8.
+// db.videogames.aggregate([
+//     {
+//         $unwind: "$genre"
+//     },
+//     {
+//         $sort: {
+//             copiesSold: -1
+//         }
+//     },
+//     {
+//         $group: {
+//             _id: "$genre",
+//             title: { $first: "$title" },
+//             copiesSold: { $first: "$copiesSold" }
+//         }
+//     },
+//     {
+//         $project: {
+//             _id: 0,
+//             genre: "$_id",
+//             title: 1,
+//             copiesSold: 1
+//         }
+//     }
+// ])
+
+
+//9.
+// db.videogames.aggregate([
+//     {$group:
+//         {_id:"$developer",
+//             juegosTotales: {$sum: 1},
+//         }
+//     },
+//     {$match: {
+//         juegosTotales: {$gt: 1}
+//     }},
+//     {$project: {
+//         _id: 0,
+//         developer: "$_id",
+//         juegosTotales: 1
+//     }},
+// ])
+
+
+//10.
+// db.videogames.aggregate([
+//     {$unwind: "$platforms"},
+//     {$group: {
+//         _id: "$platforms",
+//         precioPlataforma: {$sum: "$price"}
+//     }},
+//     {$project: {
+//         _id: 0,
+//         platforms: "$_id",
+//         precioPlataforma: 1
+//     }},
+// ])
+
+
+//11.
+// db.videogames.aggregate([
+//     {$match: {
+//         price: {$lt: 30},
+//     }},
+//     {$project: {
+//         _id: 0,
+//         title: 1,
+//         price: 1,
+//         totalAwards: {$size: "$awards"}
+//     }},
+//     {$match: {
+//         totalAwards: {$gte: 2}
+//     }}
+// ])
+
+
+//12.
+// db.videogames.aggregate([
+//     {$group: {
+//         _id: "$realiseYears",
+//         totalGames: {$sum: 1}
+//     }},
+//     {$sort: {totalGames: -1}},
+//     {$limit: 1},
+//     {$project: {
+//         _id: 0,
+//         realiseYears: "$_id",
+//         totalGames: 1
+//     }}
+// ])
+
+
+//13.
+// db.videogames.aggregate([
+//     {$group: {
+//         _id: "$developer.country",
+//         ratingTotal: {$avg: "$rating"}
+//     }},
+//     {$match: {
+//         ratingTotal: {$gt: 92}
+//     }},
+//     {$project: {
+//         _id: 0,
+//         country: "$_id",
+//         ratingTotal: 1
+//     }}
+// ])
+
+
+//14.
+// db.videogames.aggregate([
+//     {$match: {
+//         title: { $regex: /The/i },
+//         rating: {$gt: 92}
+//     }},
+//     {$project: {
+//         _id: 0,
+//         title: 1,
+//         rating: 1,
+//         developer: "$developer.name"
+//     }}
+// ])
+
+
+//15.
+// db.videogames.aggregate([
+//     {$unwind: "$genre"},
+//     {$group: {
+//         _id: "$genre",
+//         promedioVentas: {$avg: "$copiesSold"}
+//     }},
+//     {$sort: {promedioVentas: -1}},
+//     {$limit: 3},
+//     {$project: {
+//         _id: 0,
+//         genre: "$_id",
+//         promedioVentas: 1
+//     }}
+// ])
+
+
+//16.
+db.videogames.aggregate([
+    {$group: {
+        _id: "$realiseYears",
+        varato: {$first: "$price"},
+        caro: {$last: "$price"}
+    }},
+    {$project: {
+        _id: 0,
+        realiseYears: "$_id",
+        varato: 1,
+        caro: 1
+
+    }},
+
+//17.
+// var cursor = db.videogames.find({"developer.name": "FromSoftware"},{rating:1, _id:0})
+
+// var contador = 0;
+// var suma = 0;
+
+// while(cursor.hasNext()) {
+//     var doc = cursor.next();
+//     suma = suma + doc.rating;
+//     contador++;
+// }
+// var media = suma/contador;
+
+// print("FromSoftware" + " " + media);
+
+
+//18.
+// var cursor = db.videogames.find({price: {$gt: 50}},{price:1, title:1})
+
+// var contador = 0;
+// var suma = 0;
+
+// while(cursor.hasNext()) {
+//     var doc = cursor.next();
+    
+//     print("Title: " + doc.title + "  Price: " + doc.price);
+// }
+
+
+//19.
+// var cursor = db.videogames.find({}).sort({copiesSold: -1}).limit(1)
+
+
+// while(cursor.hasNext()) {
+//     var doc = cursor.next();
+
+//     print("Title: " + doc.title + "  Copias: " + doc.copiesSold);
+
+// }
+
+
+
+
+//20.
+// var cursor = db.videogames.find({},{platforms:1,_id:0})
+
+// while(cursor.hasNext()) {
+//     var doc = cursor.next();
+//     var size = doc.platforms.length;
+//     var i = 0;
+
+//     while(i < size) {
+//         var platform = doc.platforms[i];
+//         print(platform);
+//         i++;
+//     }
+// }
+
+
+
